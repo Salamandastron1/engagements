@@ -28,7 +28,7 @@ Most of the following is problem and environment specific. Please refer to Pivot
 
 The current version of Pivotal's tooling on the Platform automation docker image (P-Automator) requires a special work around when using proxies. Of note is this code:
 
-```
+```shell
     cat > /usr/local/sbin/aws <<EOF
     #!/bin/sh
 
@@ -43,7 +43,7 @@ The current version of Pivotal's tooling on the Platform automation docker image
 The code above is included in the entire Ops Manager install task. TLDR; it will set proxy variables explicity for P-Automator to use. Below is the entire task including that code.
 
 
-```
+```shell
 run:
   path: bash
   args:
@@ -136,7 +136,7 @@ done | less
 
 To get some additional debug info out of the `aws` command when using it through `p-automator`, we experimented with the following `/usr/local/sbin/aws` shim:
 
-```
+```shell
 #!/bin/sh
 
 export http_proxy=http://10.26.27.235:3128/
